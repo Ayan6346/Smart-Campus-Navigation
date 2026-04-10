@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Map - Smart Campus Navigation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="brand">
+      <img src="logo.jpeg" alt="ITM University Logo" class="logo">
+      <div>
+        <h2>ITM Navigator</h2>
+        <p>Campus map and location finder</p>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="map.html">Map</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <main class="map-dashboard">
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-head">
+          <h3>Search locations</h3>
+          <p>Search by name or select a category.</p>
+        </div>
+        <input id="searchInput" class="search-input" type="search" placeholder="Search locations..." oninput="renderLocationList()">
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Categories</h3>
+        <div class="chip-row">
+          <button class="chip active" onclick="setCategory('all')">All</button>
+          <button class="chip" onclick="setCategory('academic')">Academic</button>
+          <button class="chip" onclick="setCategory('residential')">Residential</button>
+          <button class="chip" onclick="setCategory('sports')">Sports</button>
+          <button class="chip" onclick="setCategory('facility')">Facilities</button>
+        </div>
+      </div>
+
+      <div class="sidebar-card location-list-card">
+        <h3>Locations</h3>
+        <div id="locationList" class="location-list"></div>
+      </div>
+    </aside>
+
+    <section class="map-section">
+      <div class="panel map-card map-panel">
+        <div class="map-panel-header">
+          <div>
+            <h2>Campus map</h2>
+            <p>Interactive view with location previews and directions.</p>
+          </div>
+          <button class="btn btn-secondary" onclick="openCurrentInMaps()">Open in Google Maps</button>
+        </div>
+        <iframe id="mapFrame" src="https://www.google.com/maps?q=ITM+University+Gwalior&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </section>
+
+    <aside class="details-panel">
+      <div class="sidebar-card">
+        <div class="location-details">
+          <div class="detail-header">
+            <img id="placeImage" src="other.jpg" alt="Campus overview">
+            <div>
+              <span class="eyebrow">Selected location</span>
+              <h2 id="placeTitle">ITM University Gwalior</h2>
+            </div>
+          </div>
+          <p id="placeDesc">Choose a location from the list to see its map placement, photo, and description.</p>
+          <div class="feature-tags" id="featureTags"></div>
+          <div class="detail-actions">
+            <button class="btn" onclick="openCurrentInMaps()">Get directions</button>
+            <a id="directionsLink" class="text-link" href="#" target="_blank">View in full map</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <p>© 2026 Smart Campus Navigation System | ITM University</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
